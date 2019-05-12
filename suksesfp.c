@@ -175,7 +175,7 @@ void *MembacaCrontab(void *arg)
 		if(flag_bulan!=0 && flag_hari!=0 && flag_tgl!=0 && flag_jam!=0 && flag_menit!=0 && local->tm_sec==0)
 		{
 			system(menjalankan);
-			sleep(1);
+			sleep(3);
 		}
 	}
 	return NULL;
