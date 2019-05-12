@@ -23,50 +23,35 @@ void *MembacaCrontab(void *arg)
 	if(strcmp(memisah, "*")!=0)
 	{
 		menit=atoi(memisah);		//lalu mengubah string, angka menjadi sebuah  bilangan numerik integer
-		if((menit==0 && strcmp(memisah, "0")!=0) || (menit>59 || menit<0))
-		{
-			return NULL;
-		}
+		if((menit==0 && strcmp(memisah, "0")!=0) || (menit>59 || menit<0)) return NULL;
 	}
 
 	memisah = strtok(NULL, " "); 
 	if(strcmp(memisah, "*")!=0)
 	{
 		jam=atoi(memisah);
-		if((jam==0 && strcmp(memisah, "0")!=0) || (jam>23 || jam<0))
-		{
-			return NULL;
-		}
+		if((jam==0 && strcmp(memisah, "0")!=0) || (jam>23 || jam<0)) return NULL;
 	}
 
 	memisah = strtok(NULL, " "); 
 	if(strcmp(memisah, "*")!=0)
 	{
 		tgl=atoi(memisah);
-		if(tgl==0 && strcmp(memisah, "0")!=0)
-		{
-			return NULL;
-		}
+		if(tgl==0 && strcmp(memisah, "0")!=0) return NULL;
 	}
 
 	memisah = strtok(NULL, " "); 
 	if(strcmp(memisah, "*")!=0)
 	{
 		bulan=atoi(memisah);
-		if((bulan==0 && strcmp(memisah, "0")!=0) || (bulan>12 || bulan<1))
-		{
-			return NULL;
-		}
+		if((bulan==0 && strcmp(memisah, "0")!=0) || (bulan>12 || bulan<1)) return NULL;
 	}
 
 	memisah = strtok(NULL, " "); 
 	if(strcmp(memisah, "*")!=0)
 	{
 		hari=atoi(memisah);
-		if((hari==0 && strcmp(memisah, "0")!=0) || (hari>6 || hari<0))
-		{
-			return NULL;
-		}
+		if((hari==0 && strcmp(memisah, "0")!=0) || (hari>6 || hari<0)) return NULL;
 	}
 
 	char crontab[200];
@@ -114,62 +99,32 @@ void *MembacaCrontab(void *arg)
 
 		if(menit != -1)
 		{
-			if(menit==local->tm_min)
-			{
-				flag_menit=-1;
-			}
-			else
-			{
-				flag_menit=0;
-			}
+			if(menit==local->tm_min) flag_menit=-1;
+			else flag_menit=0;
 		}
 
 		if(jam != -1)
 		{
-			if(jam==local->tm_hour)
-			{
-				flag_jam=-1;
-			}
-			else
-			{
-				flag_jam=0;
-			}
+			if(jam==local->tm_hour) flag_jam=-1;
+			else flag_jam=0;
 		}
 
 		if(tgl != -1)
 		{
-			if(tgl==local->tm_mday)
-			{
-				flag_tgl=-1;
-			}
-			else
-			{
-				flag_tgl=0;
-			}
+			if(tgl==local->tm_mday) flag_tgl=-1;
+			else flag_tgl=0;
 		}
 
 		if(bulan != -1)
 		{
-			if(bulan==local->tm_mon+1)
-			{
-				flag_bulan=-1;
-			}
-			else
-			{
-				flag_bulan=0;
-			}
+			if(bulan==local->tm_mon+1) flag_bulan=-1;
+			else flag_bulan=0;
 		}
 
 		if(hari != -1)
 		{
-			if(hari==local->tm_wday)
-			{
-				flag_hari=-1;
-			}
-			else
-			{
-				flag_hari=0;
-			}
+			if(hari==local->tm_wday) flag_hari=-1;
+			else flag_hari=0;
 		}
 		printf("%s\n",menjalankan);
 		if(flag_bulan!=0 && flag_hari!=0 && flag_tgl!=0 && flag_jam!=0 && flag_menit!=0 && local->tm_sec==0)
