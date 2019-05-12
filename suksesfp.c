@@ -23,14 +23,14 @@ void *MembacaCrontab(void *arg)
 	if(strcmp(memisah, "*")!=0)
 	{
 		menit=atoi(memisah);		//lalu mengubah string, angka menjadi sebuah  bilangan numerik integer
-		if((menit==0 && strcmp(memisah, "0")!=0) || (menit>59 || menit<0)) return NULL;
+		if((menit==0 || (menit>59 || menit<0)) return NULL;
 	}
 
 	memisah = strtok(NULL, " "); 
 	if(strcmp(memisah, "*")!=0)
 	{
 		jam=atoi(memisah);
-		if((jam==0 && strcmp(memisah, "0")!=0) || (jam>23 || jam<0)) return NULL;
+		if(((strcmp(memisah, "0")!=0) && jam==0 || (jam>23 || jam<0)) return NULL;
 	}
 
 	memisah = strtok(NULL, " "); 
@@ -44,14 +44,14 @@ void *MembacaCrontab(void *arg)
 	if(strcmp(memisah, "*")!=0)
 	{
 		bulan=atoi(memisah);
-		if((bulan==0 && strcmp(memisah, "0")!=0) || (bulan>12 || bulan<1)) return NULL;
+		if(((strcmp(memisah, "0")!=0) && bulan==0 || (bulan>12 || bulan<1)) return NULL;
 	}
 
 	memisah = strtok(NULL, " "); 
 	if(strcmp(memisah, "*")!=0)
 	{
 		hari=atoi(memisah);
-		if((hari==0 && strcmp(memisah, "0")!=0) || (hari>6 || hari<0)) return NULL;
+		if((strcmp(memisah, "0")!=0) && hari==0 || (hari>6 || hari<0)) return NULL;
 	}
 
 	char crontab[200];
