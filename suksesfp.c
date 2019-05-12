@@ -196,8 +196,6 @@ int main()
     
 		if(get_t<sb.st_mtime)
 		{
-			get_t=sb.st_mtime;
-			sleep(3);
 
 			for(int n=0; n<0; n++)
 			{
