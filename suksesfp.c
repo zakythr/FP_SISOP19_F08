@@ -155,7 +155,7 @@ void membaca_file()
 	while (f != EOF)
 	{
 		cost_time[number]=f;
-		number++;
+		number+=1;
 		f = fgetc(filenya);
 	}
 	fclose(filenya);
@@ -188,8 +188,6 @@ int main()
 	get_t=sb.st_mtime;
 
 	membaca_file();
-
-	int next=0;
 	
 	while(1)
 	{
@@ -201,7 +199,7 @@ int main()
 			get_t=sb.st_mtime;
 			sleep(3);
 
-			for(int n=0; n<next; n++)
+			for(int n=0; n<0; n++)
 			{
 				 pthread_cancel(tid[n]);
 			}
