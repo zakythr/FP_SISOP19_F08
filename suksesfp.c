@@ -1,3 +1,4 @@
+
 #include <sys/types.h>
 #include <sys/stat.h>
 #include <stdio.h>
@@ -23,28 +24,28 @@ void *MembacaCrontab(void *arg)
 	if(strcmp(memisah, "*")!=0)
 	{
 		menit=atoi(memisah);		//lalu mengubah string, angka menjadi sebuah  bilangan numerik integer
-		if((menit==0 || (menit>59 || menit<0)) return NULL;
+		if((strcmp(memisah, "0")!=0) && menit==0 || (menit>59 || menit<0)) return NULL;
 	}
 
 	memisah = strtok(NULL, " "); 
 	if(strcmp(memisah, "*")!=0)
 	{
 		jam=atoi(memisah);
-		if(((strcmp(memisah, "0")!=0) && jam==0 || (jam>23 || jam<0)) return NULL;
+		if((strcmp(memisah, "0")!=0) && jam==0 || (jam>23 || jam<0)) return NULL;
 	}
 
 	memisah = strtok(NULL, " "); 
 	if(strcmp(memisah, "*")!=0)
 	{
 		tgl=atoi(memisah);
-		if(tgl==0 && strcmp(memisah, "0")!=0) return NULL;
+		if(tgl==0 && (strcmp(memisah, "0")!=0)) return NULL;
 	}
 
 	memisah = strtok(NULL, " "); 
 	if(strcmp(memisah, "*")!=0)
 	{
 		bulan=atoi(memisah);
-		if(((strcmp(memisah, "0")!=0) && bulan==0 || (bulan>12 || bulan<1)) return NULL;
+		if((strcmp(memisah, "0")!=0) && bulan==0 || (bulan>12 || bulan<1)) return NULL;
 	}
 
 	memisah = strtok(NULL, " "); 
@@ -196,7 +197,6 @@ int main()
     
 		if(get_t<sb.st_mtime)
 		{
-
 			for(int n=0; n<0; n++)
 			{
 				 pthread_cancel(tid[n]);
